@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <title>Code Player</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    
+     <!--Agregar Jquery UI a la página-->
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link href="../jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css?family=Arvo|Lato" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<!--font-family: 'Arvo', serif; -->
+</head>
+
+<body> 
+	
+	<div id="top_bar">
+		<div id="logo">
+			CODE PLAYER<span id="logo_s"> by Andres Guerrero</span>
+		</div>
+		
+		<div id="button_container">
+			
+			<div class="toggle_button active" id="html">HTML</div>
+			<div class="toggle_button" id="css">CSS</div>
+			<!--<div class="toggle_button" id="js">JS</div>-->
+			<div class="compile_button" id="output">Compile</div>
+			<a href="c_player.html"></a>
+		
+		</div>
+	</div>
+	
+	<div id="body_container">
+		<div id="html_panel" class="element" >
+			<h3>HTML Code</h3>
+			<textarea id="html_textarea" class="panel"><p>Hello world!</p></textarea>
+		</div>
+		
+		<div id="css_panel" class="element hidden">
+			<h3>CSS Code</h3>
+			<textarea id="css_textarea" class="panel">p{ color: green;}</textarea>
+		</div>
+		
+		<div id="js_panel" class="element hidden">
+			<textarea id="js_textarea" class="panel"></textarea>
+		</div>
+	</div>
+	
+	<div id="result_container">
+		<iframe id="output_panel"x></iframe>
+	</div>
+	
+    <script type="text/javascript">
+		
+		//funcion que se encarga de imprimir el html actualizado con lo que esté
+		//en html_textarea y css_textarea para imprimirlo en iframe
+		function updateOutput(){
+			$("iframe").contents().find("html").html(
+				"<html>"+
+				"<head>"+
+					"<style type='text/css'>"+
+						$("#css_textarea").val()+
+					"</style>"+
+				"</head>"+
+				"<body>"+
+					$("#html_textarea").val()+
+				"</body>"+
+				"</html>");
+			
+			document.getElementById("output_panel").contentWindow.eval($("#js_textarea").val());
+			
+		}	
+		
+		//efecto de hover funcion 1 al entrar; funcion 2 al salir el mouse
+		$(".toggle_button").hover(function(){
+			$(this).addClass("hover_button");	
+		}, function(){
+			$(this).removeClass("hover_button");
+		});
+		
+		//efecto al hacer clic en un boton
+		$(".toggle_button").click(function(){
+			$(this).toggleClass("active");
+			$(this).removeClass("hover_button");
+			
+			var panelId = $(this).attr("id")+"_panel";
+			
+			$("#"+panelId).toggleClass("hidden");
+			
+			//retorna el numero de elementos con cierta clase
+			var numberOfActivePanels = 3 - $(".hidden").length;
+			//para poder alinearlos si se seleccionan en la pantalla con width
+			$(".element").width(($(window).width()/numberOfActivePanels)-15);
+		});
+		
+		$("textarea").height($(window).height()-$("#top_bar").height()-350);
+	
+		//funcion que actualiza el iframe cada vez que se deja de presionar
+		//una tecla
+		$("#output").click(function(){
+			updateOutput();
+		});
+		
+		
+    </script>
+</body>
+</html>

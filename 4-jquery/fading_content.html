@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <title>Fading Content</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style type="text/css">
+        #circle{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: green;
+            margin: 15px;
+        }
+        
+        .square
+        {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            margin: 15px;
+        }
+        
+        #p2{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body> 
+    <div id="circle"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <p id="p1">This is some paragraph</p>
+    <button id="button_1">Disappear text</button>
+    
+    <p id="p2">This text was hidden</p>
+    <button id="button_2">Appear Text</button>
+    
+    <p id="p3">This text was toggled</p>
+    <button id="button_3">Toogle Text</button>
+    
+     <p id="p4">This text 2 was toggled</p>
+    <button id="button_4">Toogle Text2</button>
+    
+    
+    
+    <script type="text/javascript">
+            
+        $("div").click(function(){
+            $(this).fadeOut(1500,function(){
+                alert("Fade out has finished");
+            });
+        });
+        
+        $("#button_1").click(function(){
+            $("#p1").fadeOut(1000);
+        });
+        
+        $("#button_2").click(function(){
+            
+            $("#p2").fadeIn(1000);
+        });
+        
+        
+        $("#button_3").click(function(){
+            
+            if($("#p3").css("display") == "none"){
+                $("#p3").fadeIn(1000);
+            }
+            
+            else{
+                $("#p3").fadeOut(1000);
+            }
+        });
+        
+        var textShowing = true;
+        
+        $("#button_4").click(function(){
+            
+            if(textShowing){
+                $("#p4").fadeOut(1000, function(){
+                    textShowing=false;
+                });
+            }
+            
+            else{
+                $("#p4").fadeIn(1000, function(){
+                    textShowing=true;
+                });
+            }
+        });
+        
+
+    </script>
+</body>
+</html>

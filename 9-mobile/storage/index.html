@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+		
+  </head>
+
+  <body>
+	
+    <script src="zepto.js"></script>
+		<script type="text/javascript">
+			
+			if(typeof(Storage) != "undefined"){
+				alert("local storage is go")
+				
+				//localStorage.setItem("name", "Andres");
+				//alert(localStorage.getItem("name"));
+				
+				var names = [];
+				names[0] = prompt("new name?");
+				localStorage.setItem("names", JSON.stringify(names));
+				
+				var storednames = JSON.parse(localStorage.getItem("names"));
+				alert(storednames[0]);
+			}
+			
+			else{
+				alert("upgrade browser")
+			}
+		
+		</script>
+  
+  </body>
+</html>

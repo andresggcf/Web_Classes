@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <title>Fading Content</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style type="text/css">
+        #circle{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: green;
+            margin: 15px;
+        }
+    </style>
+
+</head>
+
+<body> 
+    <div id="circle"></div>
+    
+    
+    <script type="text/javascript">
+        
+        $("#circle").click(function(){
+            $(this).animate({
+                width:"400px",
+                height:"400px",
+                marginLeft:"100px",
+                marginTop:"250px",
+                            }, 3500, function(){
+                $(this).css("background-color","red");
+            });
+        });
+        
+    </script>
+</body>
+</html>

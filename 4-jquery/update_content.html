@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>JQuery</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style type="text/css">
+        #circle{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: green;
+            margin: 15px;
+        }
+    </style>
+
+</head>
+
+<body> 
+    <div id="circle"></div>
+    <p>This is some text.</p>
+    
+    <iframe src="https://www.youtube.com/watch?v=keWi0PAodhw"></iframe>
+    
+    <script type="text/javascript">
+        
+        $("#circle").click(function(){
+           $("iframe").attr("src","http://www.codestars.com"); 
+        });
+        
+        /*$("#circle").click(function() {
+            $("p").html("This is NEWW text.");
+        });
+        
+        $("#circle").hover(function(){
+           alert($("p").html()); 
+        }); */
+        
+    </script>
+</body>
+</html>

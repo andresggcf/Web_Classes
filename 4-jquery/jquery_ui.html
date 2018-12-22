@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    <title>JQuery</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    
+     <!--Agregar Jquery UI a la página-->
+    <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+    
+    
+    <style>
+        #draggable { 
+            width: 150px; 
+            height: 150px; 
+            padding: 0.5em; 
+        }
+        
+        #containment-wrapper { 
+            width: 95%; 
+            height:150px; 
+            border:2px solid #ccc; 
+            padding: 10px; 
+        }
+        
+        #draggable2{ 
+            width: 90px; 
+            height: 90px; 
+            padding: 0.5em; 
+            float: left; 
+            margin: 0 10px 10px 0; 
+        }
+        
+        #resizable { 
+            width: 150px; 
+            height: 150px; 
+            padding: 0.5em; 
+        }
+        
+         #also { 
+            width: 150px; 
+            height: 150px; 
+            padding: 0.5em; 
+            background-color: azure;
+        }
+		
+		#little_square{
+			width: 150px;
+			height: 150px;
+			padding: 0.5em;
+			background-color: cornsilk;
+		}
+		
+		#big_square{
+			width: 300px;
+			height: 300px;
+			padding: 0.5em;
+			background-color:aliceblue;
+		}
+        
+        
+    </style>
+
+</head>
+
+<body> 
+    
+    <div id="draggable" class="ui-widget-content">Drag me!</div>
+    
+    <div id="containment-wrapper">
+        <div id="draggable2" class="draggable ui-widget-content">
+            <p>I'm contained within the box</p>
+        </div>
+    </div>
+    
+    <div id="resizable" class="ui-widget-content">Resizable</div>
+    <div id="also"></div>
+	
+	<div id="little_square"></div>
+	<div id="big_square"></div>
+	
+	<div id="accordion">
+		<h3>Title</h3>
+		<div>
+			<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo u odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+		</div>
+		<h3>Title2</h3>
+		<div>
+			<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo u odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+		</div>
+		<h3>Title3</h3>
+		<div>
+			<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo u odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+		</div>
+		<h3>Title4</h3>
+		<div>
+			<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo u odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+		</div>
+	</div>
+	
+	
+	<ul id="sortable">
+  		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3</li>
+		<li>Item 4</li>
+	</ul>
+	
+    
+    <script type="text/javascript">
+        
+        $( function() {
+            $("#draggable").draggable({ axis: "y" });
+            $("#draggable2").draggable({containment: "parent"});
+            $("#resizable").resizable({
+                alsoResize: "#also",
+				
+				//callback function para resize
+                resize:function(event, ui){
+                    if ($("#resizable").width() > 350){
+                        alert("over 300");
+                    }
+                }
+            });
+            $("#also").resizable();
+			
+			
+			$("#little_square").draggable();
+			$("#big_square").droppable({
+				
+				//call back para cuando algo esté adentro de droppable.
+				drop:function(event,ui){
+					alert("inside");
+				}
+			});
+			
+			
+			$( function() {
+    			$( "#accordion" ).accordion();
+  			});
+			
+			
+			$( function() {
+    			$( "#sortable" ).sortable();
+    			$( "#sortable" ).disableSelection();
+  			});
+            
+        });
+        
+    </script>
+</body>
+</html>

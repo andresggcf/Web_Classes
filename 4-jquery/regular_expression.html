@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Reg_Expr</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+
+<body> 
+    
+    <script type="text/javascript">
+        
+        ///i es para que no 
+        //diferencie entre mayusculas y minusculas
+        var regex = /is/i;
+        
+        ///g es para que muestre todas las instancias 
+        //de la expresión regular.
+        //var regex = /e/g;
+        
+        var str = "Regex iS great!";
+        
+        //does the word "is" appear in the string str.
+        var result = str.match(regex);
+        
+        alert(result);
+        
+    </script>
+</body>
+</html>

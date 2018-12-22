@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript</title>
+
+</head>
+
+<body> 
+
+    <p id="paragraph">Hello World</p>
+    <button id="button_text">change text</button>
+    
+    <p id="paragraph2"> Javascript is ...</p>
+    <button id="button_text_2">Append text</button>
+    
+    <p id="paragraph3"></p>
+    <button id="button_text_3">Appear text</button>
+    
+    <p id="paragraph4"> This is some Text</p>
+    <button id="button_style_1">Style Text</button>
+    
+    
+    
+    <script type="text/javascript">
+        
+        /*
+        Get the current document, get the element with id 
+        button_text, click it and run function.
+        */
+        document.getElementById("button_text").onclick = function(){
+            
+            /*
+            Get the current document, get the element with id 
+            paragraph and change its text.
+            */
+            document.getElementById("paragraph").innerHTML="Hey!";
+        };
+        
+        document.getElementById("button_text_2").onclick = function(){
+            document.getElementById("paragraph2").innerHTML = document.getElementById("paragraph2").innerHTML + " weird";
+        };
+        
+        document.getElementById("button_text_3").onclick = function(){
+            document.getElementById("paragraph3").innerHTML="filled it";
+        };
+        
+        document.getElementById("button_style_1").onclick = function(){
+            document.getElementById("paragraph4").style.color = "red";
+            document.getElementById("paragraph4").style.fontSize="45px";
+        };
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,279 @@
+/*Reset body to 0*/
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        .clear{
+            clear: both;
+        }
+        
+        #top_menu{
+            width:1000px;
+            /*center everything*/
+            margin: 0 auto; 
+            background-color: white;
+            height:40px;
+        }
+        
+        /*The float property is used for positioning and layout on web pages.
+
+        The float property can have one of the following values:
+
+            left - The element floats to the left of its container
+            right- The element floats to the right of its container
+            none - The element does not float (will be displayed just where it occurs in the text). This is default
+            inherit - The element inherits the float value of its parent*/
+        #logo{
+            margin: 10px;
+            width: 100px;
+            float: left;
+        }
+        
+        .top_menu_section{
+            float:left;
+            border-left: 1px #cccccc solid;
+            padding-right: 70px;
+            height 100px;
+        }
+        
+        .topbar_menu_button{
+            font-weight: 700;
+            font-size: 90%;
+            padding: 17px 15px 10px 15px;
+            height: 25px;   
+        }
+        
+        
+        #sign_in_image{
+            width 25px;
+            /*top right bottom left*/
+            margin: 15px 12px 12px 10px;
+            float: left;
+        }
+        
+        #sign_in_text{
+            font-weight: 700;
+            font-size: 90%;
+            position:relative;
+            top:17px;
+        }
+        
+        #search_menu_box{
+            background-color: #e4e4e4;
+            border: none;
+            font-weight: 700;
+            font-size: 90%;
+            padding: 5px 10px 10px 10px;
+            margin: 10px 0 10px 10px;
+            float: left;
+            width: 150px;
+            
+        }
+        
+        #magn_glass{
+            
+            height: 33px;
+            margin-top: 9px;
+        }
+        
+        #red_menu_section{
+            background-color: #bb1919;
+            width:100%;
+            height:60px;
+        }
+        
+        #red_menu_container{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        
+        #red_menu_container img{
+            padding: 12px 0 0 0;
+        }
+        
+        #local_news{
+            float: right;
+            border: 1px #bb4545 solid;
+            margin: 9px 0 0 0;
+            padding: 0 15px 17px 15px;
+        }
+        
+        
+        #local_news a{
+            color:white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 300;
+            position: relative;
+            top: 10px;
+        
+        }
+        
+        #local_news a:hover{
+            text-decoration: underline;
+        }
+        
+        #dark_red_menu_section{
+            background-color: #a91717;
+            width: 100%;
+            height: 30px;
+            padding: 10px 0 0 0;
+            
+        }
+        
+        #dark_red_menu_container{
+            width:1000px;
+            /*center everything*/
+            margin: 0 auto; 
+        }
+        
+        #dark_red_menu_container a{
+            color: white;
+            text-decoration: none;
+            padding: 0px 15px 0px 2px;
+            margin-right: 10px;
+            border-right: 1px #bb4545 solid;
+            font-size: 13px;
+        }
+        
+        
+        #dark_red_menu_container a:hover{
+            
+        }
+        
+        .no_border{
+            border:none !important;
+        }
+        
+        #page_section{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h2{
+            font-weight: 300;
+            margin-top: 40px;
+            font-size: 20px;
+            border-bottom: 2px solid #a91717;
+            width: 105px;
+        }
+        
+        h3 a{
+            font-size: 30px;
+            color: black;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 0px;
+        }
+        
+        h3 a:hover{
+            color: #1167a8;
+            text-decoration: underline;
+        }
+        
+        #art_summary{
+            color: #5a5a5a;
+            width: 230px;
+            float:left;
+        }
+        
+        .clock_img{
+            height: 20px;
+            position: relative;
+            top: 6px;
+        }
+        
+        #art_summary a{
+            text-decoration: none;
+            color:black;
+            font-size:14px;
+        }
+        
+         #art_summary a:hover{
+            color:#1167a8
+        }
+        
+        .topic_link{
+            text-decoration: none;
+            color:#a91717 !important;
+            border-left: 1px solid #cccccc;
+            padding-left: 10px;
+            font-size: 14px !important;
+        }
+        
+        .date{
+            padding-right: 10px;
+            color: #5a5a5a;
+            font-size: 14px;
+        }
+        
+        #article_container{
+            float: left;
+            width: 660px;
+            border-right: 1px solid #cccccc;
+        }
+        
+        #main_art_image{
+            width: 400px;
+            margin-left: 20px;
+            float:left;
+        }
+        
+        #article_hr{
+            border-top: 1px solid #a91717;
+            width: 50px;
+        }
+        
+        #watch_listen_section{
+            width:330px;
+            float: right;
+        }
+        
+        h4{
+            font-weight: 500;
+            font-size: 26px;
+            color:#555555;
+            margin: 1em 0px 0.8em 0px;
+        }
+        
+        .article_side_img{
+            
+            float:left;
+            width: 100px;
+            margin-right:10px;
+        }
+        
+        .w_l_link{
+            text-decoration: none;
+            color:black;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .w_l_link:hover{
+            color:#1167a8
+        }
+        
+        .side_art_info{
+            float:right;
+            width:215px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .side_art_info p{
+            margin: 0px;
+        }
+        
+        .no_border{
+            border-left: none;
+            text-decoration: none;
+            color:#a91717 !important;
+            padding: 0px
+        }
+        
+        .border_right{
+            border-right: 1px solid #cccccc;
+        }

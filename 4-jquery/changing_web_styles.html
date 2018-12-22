@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <title>JQuery</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style type="text/css">
+        #circle{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: green;
+            margin: 15px;
+        }
+        
+        .square
+        {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            margin: 15px;
+        }
+    </style>
+
+</head>
+
+<body> 
+    <div id="circle"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    
+    <script type="text/javascript">
+        
+        $("#circle").click(function(){
+            alert($("#circle").css("background-color"));
+            alert($("body").css("width"));
+                  
+            $("#circle").css("background-color","red");
+            
+        });
+        
+        $("div").click(function(){
+            //"this" is the element that hass been clicked
+            $(this).css("display","none");
+        });
+        
+        $("div").click(function(){
+            
+            if($(this).attr("id") == "circle"){
+                //"this" is the element that hass been clicked
+                alert("you clicked on a circle");
+            }
+            
+            else{
+                alert("you clicked on a square");
+            }
+        });
+
+    </script>
+</body>
+</html>

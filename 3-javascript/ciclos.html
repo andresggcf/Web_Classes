@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript</title>
+
+</head>
+
+<body>  
+    
+    <div id="tweetDiv"> </div>
+    <div id="tweetDiv2"> </div>
+    
+    <p>How many fingers are you holding up?</p>
+    <select id="myNumber">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <button id="guess_button">Guess!</button>
+    
+    <script type="text/javascript">
+        
+        var tweets = ["Hello","biatch", "heheh"];
+        var tweets2 = ["Hello2", "biatch2", "herr Schaffranke", "just do it"];
+        var tweetStr="";
+        var tweetStr2 = "";
+        
+
+        //ciclos FOR/////////////////////////////////////////////
+        for(var i = 0; i < tweets.length; i++){
+            tweetStr = tweetStr+"<p>"+tweets[i]+"</p>";
+        } 
+        document.getElementById("tweetDiv").innerHTML = tweetStr;
+        
+        
+        //ciclos WHILE/////////////////////////////////////////////
+        var x = 0;
+        while (x < tweets2.length){
+            tweetStr2 = tweetStr2+"<p>"+tweets2[x]+"</p>";
+            x++;
+        }
+        
+        document.getElementById("tweetDiv2").innerHTML = tweetStr2;
+        
+        document.getElementById("guess_button").onclick = function(){
+            
+            var myNumber = document.getElementById("myNumber").value;
+            var counter = 1;
+            var guessed = false;
+            
+            while(guessed == false){
+                
+                var guess = Math.floor(Math.random()*6);
+                
+                if (guess == myNumber){
+                    //computer is correct
+                    guessed = true;
+                    alert("Got it! it was a "+ myNumber +", it took " + counter + " times.");
+                }
+            
+                else{
+                    //computer is wrong
+                    counter ++;
+                }
+            }
+            
+            
+        };
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript</title>
+
+</head>
+
+<body>  
+    
+    <input type="text" id="input">
+    <button id="guess_button_1">Guess Number</button>
+    
+    <script type="text/javascript">
+        
+        
+        
+        document.getElementById("guess_button_1").onclick = function(){
+            var randomNumber = Math.floor(Math.random()*6);
+            var nope = "Nope, the number was ";
+            var randomStr = randomNumber.toString();
+            var concatStr = nope.concat(randomStr);
+            var number = document.getElementById("input").value;
+            
+            if(number > 5){
+                alert("It has to be between 0 and 5");
+            }
+            
+            else if(number == randomNumber){
+                alert("you guessed it!");
+            }
+            
+            else{
+                alert(concatStr);
+                //alert("Nope, the number was " + randomNumber);
+            }
+        };
+        
+    </script>
+    
+</body>
+</html>

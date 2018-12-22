@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <title>Form</title>
+    
+    <!--Agregar Jquery a la página (buscar en Google APIS)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--jquery ui install-->
+    <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+    
+    <style type="text/css">
+        
+        body{
+            font-family: helvetica, sans-serif;
+        }
+        
+        #wrapper{
+            width: 500px;
+            margin: 0 auto;
+        }
+        
+        label{
+            position: relative;
+            top: 23px;
+            font-size: 125%;
+            width: 100px;
+            float: left;
+        }
+        
+        #labelconfirm{
+            top:10px;
+        }
+        
+        input{
+            height: 40px;
+            width: 300px;
+            padding: 5px 5px 5px 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            margin: 10px;
+        }
+        
+        #submit_button{
+            width: 150px;
+            margin-left: 150px;
+        }
+        
+        #error_message{
+            color:red;
+            font-size: 100% !important;
+        }
+        
+    
+    </style>
+
+</head>
+
+<body> 
+    
+    <div id="error_message"></div>
+    
+    <div id="wrapper">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="eg. name@gmail.com"><br>
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password"><br>
+        
+        <label for="confirmpass" id="labelconfirm">Confirm Password</label>
+        <input type="password" name="confirmpass" id="confirmpass"><br>
+        
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone" placeholder="eg. 555 1234"><br>
+        
+        <input type="submit" id="submit_button" value="sign up">
+    </div>
+
+    
+    <script type="text/javascript">
+        
+        //funcion que verifica si lo tecleado tiene formato de correo electronico.
+        function isEmail(email) {
+    
+            //regex que acepta rangos de a-z, A-Z, 0-9 + @ + lo mismo +.+lo mismo
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            
+            //retorna true si es de la estructura a-zA-Z0-9@todoeso.todoeso
+            //si no, retorna false
+            return regex.test(email);
+        }
+        
+        
+        $("#submit_button").click(function(){
+            
+            var errorMessage = "";
+            
+            var fieldsMissing = "";
+            
+            if($("#email").val()==""){
+                fieldsMissing += "<br>Email";
+            }
+            
+            if($("#phone").val()==""){
+                fieldsMissing += "<br>Phone";
+            }
+            
+            if($("#password").val()==""){
+                fieldsMissing += "<br>Password";
+            }
+            
+            if($("#confirmpass").val()==""){
+                fieldsMissing += "<br>Confirm Password";
+            }
+            
+            if(fieldsMissing != ""){
+                errorMessage += "<p>The Following fields are missing: "+fieldsMissing;
+            }
+        
+            
+            
+            if(isEmail($("#email").val())==false){
+                errorMessage+="<br>Your Email is not valid";
+            }
+            
+            if($.isNumeric($("#phone").val())==false){
+                errorMessage+="<br>phone number is not numeric";
+            }
+            if($("#password").val() != $("#confirmpass").val()){
+                errorMessage+="<br>Your Passwords don't match"
+            }
+            
+            
+            if(errorMessage!=""){
+                $("#error_message").html(errorMessage);
+            }
+            
+            else{
+                $("#error_message").html("Good");
+            }
+        });
+    </script>
+</body>
+</html>
