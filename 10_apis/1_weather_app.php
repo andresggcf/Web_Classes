@@ -21,11 +21,18 @@ if (array_key_exists('city', $_GET)){
 
   //print_r ($arrayWeather);
 
-  $tempCelcius = round($arrayWeather['main']['temp'] -273.15);
-  $windspeed = $arrayWeather['wind']['speed'];
+  if ($arrayWeather['cod']==200){
 
-  $clima = "The weather in ".$ciudad." is currently '". $arrayWeather['weather'][0]['description']."'. With a temperature of ".$tempCelcius."&deg;C and a wind speed of ".$windspeed."m/s.";
+	  $tempCelcius = round($arrayWeather['main']['temp'] -273.15);
+	  $windspeed = $arrayWeather['wind']['speed'];
+	  $wind = round(($windspeed*60*60)/1000);
 
+	  $clima = "The weather in ".$ciudad." is currently '". $arrayWeather['weather'][0]['description']."'. With a temperature of ".$tempCelcius."&deg;C and a wind speed of ".$wind." km/h.";
+	}
+
+	else{
+		$error = "Your city does not exist, type another one.";
+	}
   
 
 }
