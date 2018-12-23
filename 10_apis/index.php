@@ -6,11 +6,11 @@ require "twitteroauth/autoload.php";
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
-$consumerkey = "ctHfrjFdnIjf2vmgA1VOYkORw";
-$consumersecret = "TOOYuHk2qwDeV86BRYYHlXUY2db6NLk2UJ3blBIgB6qjA4c4Vy";
+$consumerkey = "get keys from twitter api";
+$consumersecret = "secret";
 
-$accesstoken = "1197282679-jDMS2dygUBjFhFfG6lx5Ci34KoSbCeyvTimKi3m";
-$accesstokenSecret = "MGHyzxYfuS1yj7X6pnI4sp3VcSRPVIFHUwMN4dlTF7vBp";
+$accesstoken = "get tokens from twitter api";
+$accesstokenSecret = "secret too";
 
 $connection = new TwitterOAuth($consumerkey, $consumersecret, $accesstoken, $accesstokenSecret);
 $content = $connection->get("account/verify_credentials");
