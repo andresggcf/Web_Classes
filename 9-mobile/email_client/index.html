@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Email Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+		
+    <style>
+
+			@-webkit-keyframes pulse {
+				0% {
+					background-color: #CCC;
+				}
+				25% {
+					background-color: #EEE;
+				}
+				50% {
+					background-color: #CCC;
+				}
+				75% {
+					background-color: #EEE;
+				}
+				100% {
+					background-color: #CCC;
+				}
+			}
+		</style>
+		
+  </head>
+
+  <body>
+		
+		<!--Pagina Home-->
+    <div class="app-page" data-page="home">
+			
+      <div class="app-topbar blue">
+        <div class="app-title">Demo App</div>
+      </div>
+      <div class="app-content">
+        <p class="app-section">
+					Click below to send an email!
+				</p>
+				<div class="app-section" id="contactList">
+				</div>
+				<div class="app-section">
+					<div class="app-button" id="newUser">Send to new user</div>
+				</div>
+				
+      </div>
+    </div>
+
+    <!-- Pagina de inputs -->
+    <div class="app-page" data-page="sendEmail">
+			<div class="app-topbar blue">
+				<div class="app-title">Send email</div>
+				<div class="right app-button" data-back>Done</div>
+			</div>
+
+			<div class="app-content">
+				<div class="app-section">
+					From: <input class="app-input" placeholder="Sender email " id="senderEmail">
+					To: <input class="app-input" placeholder="Recipient email " id = "recipientEmail">
+				</div>
+
+				<form class="app-section">
+					<input class="app-input" name="subject" id="subject"placeholder="Subject">
+					<textarea class="app-input" name="message" id="message" placeholder="Message"></textarea>
+					<div class="app-button blue app-submit" id="sendButton">Send</div>
+				</form>
+			</div>
+		</div>
+		
+		
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+
+			
+      App.controller('home', function (page) {
+        // put stuff here
+        if (typeof localStorage !== 'undefined'){
+
+        	//funcion que al hacer click en nuevo usuario, se borra el 
+        	//correo que esté almacenado en memoria para poder tener el campo
+        	//vacío
+        	$(page).find('#newUser')
+					.clickable()
+					.on('click', function(){
+
+						//si el correo del recipiente no esta en la lista, debemos
+						//eliminar el que ya este guardado en memoria para que el usuario
+						//pueda escribir el correo facilmente
+						if(localStorage.getItem("recipient_email") !== null){
+
+							localStorage.removeItem("recipient_email");
+						}
+
+						App.load('sendEmail');
+					});
+
+        	//si la lista de contactos no está vacía, haremos que aparezca
+        	if(localStorage.getItem('recipientList') !== null){
+
+        		//arreglo de contactos
+        		var recipient_list = JSON.parse(localStorage.getItem('recipientList'));
+
+        		$.each(recipient_list, function (index, value){
+        			$(page).find('#contactList').append('<div class="app-button redirect">' + value +'</div>');
+        		});
+
+        		$(page).find('#contactList').show();
+
+        		$(page).find('.redirect')
+        		.clickable()
+        		.on("click", function(){
+        			localStorage.setItem("recipient_email", $(this).html());
+        			App.load('sendEmail');
+
+        		});
+
+        	} 
+        	//si no hay contactos en el arreglo, no muestre el div
+        	else {
+        		$(page).find('#contactList').hide();
+        	}
+
+        }
+
+      });
+
+
+      App.controller('sendEmail', function (page) {
+
+
+      	if (typeof localStorage !== 'undefined'){
+      		//busca si hay algún correo almacenado y lo pone como default en correo que envía
+      		if(localStorage.getItem('senderEmail') !== null){
+      			$(page).find('#senderEmail').val(localStorage.getItem('senderEmail'));
+      		}
+
+      		else if (localStorage.getItem('senderEmail') == null){
+      			$(page).find('#senderEmail').val('');
+      		}
+
+      		//busca si hay algún correo almacenado y lo pone como default en correo que recibe
+      		if(localStorage.getItem('recipient_email') !== null){
+      			$(page).find('#recipientEmail').val(localStorage.getItem('recipient_email'));
+      		}
+
+      	}
+
+      	//al hacer click en sendButton...
+				$(page).find('#sendButton')
+				.clickable()
+				.on('click', function(){
+					
+
+					$.ajax({
+					  type: 'GET',
+					  url: 'http://localhost/10-mobile/email_client/send_email.php?callback=response',
+					  // data to be added to query string:
+					  data: { to: $("recipientEmail").val(), from: $("senderEmail").val(), subject: $("subject").val(), message: $("message").val()},
+					  // type of data we are expecting in return:
+					  dataType: 'jsonp',
+					  timeout: 300,
+					  context: $('body'),
+					  success: function(data){
+					    // Supposing this JSON payload was received:
+					    //   {"project": {"id": 42, "html": "<div>..." }}
+					    // append the HTML to context object.
+					    alert(data.success)
+					  },
+					  error: function(xhr, type){
+					    alert('Ajax error!')
+					  }
+					});
+
+
+					if (typeof localStorage !== 'undefined'){
+
+						//asignamos un correo por default al que envía
+						localStorage.setItem('senderEmail', $('#senderEmail').val());
+						var recipient_list = new Array();
+
+						//obtenemos la lista de contactos
+						if(localStorage.getItem('recipientList') !== null){
+							recipient_list = JSON.parse(localStorage.getItem('recipientList'));
+						}
+
+						//si el contacto no está en lista de contactos...
+						if($.inArray($('#recipientEmail').val(), recipient_list) == -1){
+	
+							//agregamos este contacto en la lista
+							recipient_list.push($('#recipientEmail').val());
+							recipient_list.sort();
+
+							//creamos la lista de contactos
+							localStorage.setItem('recipientList',JSON.stringify(recipient_list));
+							console.log(recipient_list);
+						}
+
+					}else{
+						//alert it could not save data.
+						alert("cannot save email");
+					}
+
+
+				});
+				
+      });
+
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+
+
+    </script>
+  </body>
+</html>
