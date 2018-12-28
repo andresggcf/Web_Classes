@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML 5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+
+
+	<body>
+		<form id="myform">
+
+			<p>Placeholder: <input type="text" placeholder="Insert name"></p>
+
+			<p>Autofocus: <input type="text" autofocus="autofocus"></p>
+
+			<p>Autocomplete: off <input type="text" autocomplete="off"></p>
+
+			<p>Required: <input type="text" required></p>
+
+			<p>Email: <input type="email"></p>
+
+			<p>Pattern: <input type="text" pattern="[0-9]"></p>
+
+			<datalist id="names">
+				<option value="Andres">Andres</option>
+				<option value="Nelly">Nelly</option>
+				<option value="Jorge">Jorge</option>
+				<option value="Karol">Karol</option>
+				<option value="Isa">Isa</option>
+			</datalist>
+			<p>Autocomplete: <input type="text" list="names"></p>
+
+			<p>Multiple file upload: <input type="file" multiple></p>
+
+			<p><input type="submit" value="submit"></p>
+
+		</form>
+
+		<p>Code outside form: <input type="text" form="myform"></p>
+	</body>
+</html>

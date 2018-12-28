@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>video & audio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+
+
+	<body>
+
+		<video width="1280" height="720" controls autoplay id="video">
+			<source src="samplevid.mp4" type="video/mp4">
+		</video>
+
+		<audio controls> 
+			<source src="sampleAudio.mp3" type="audio/mpeg">
+		</audio>
+
+		<button id="play">Play</button>
+
+		<script>
+			document.getElementById("play").onclick = function(){
+
+				if(document.getElementById("video").paused){
+					document.getElementById("video").play();
+					this.innerHTML = "Pause";
+				}
+
+				else{
+					document.getElementById("video").pause();
+					this.innerHTML = "play";
+				}
+				
+			}
+		</script>
+		
+	</body>
+</html>

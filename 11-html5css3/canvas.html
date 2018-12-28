@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style type="text/css">
+
+			#myCanvas{
+				border: 1px solid grey;
+			}
+		
+		</style>
+
+	</head>
+
+
+	<body>
+
+		<canvas id="myCanvas" width="500" height="400">
+
+		</canvas>
+
+	<script>
+		
+		var myCanvas = document.getElementById("myCanvas");
+    var context = myCanvas.getContext("2d");
+          
+          
+    var gradient = context.createLinearGradient(150, 100, 350, 300);
+		gradient.addColorStop (0,"white");
+		gradient.addColorStop (1,"green");
+
+		//hacer un rectangulo verde en el canvas
+		context.fillStyle = gradient;
+		context.fillRect(200,150,100,100);
+
+		context.moveTo(200,150);
+		context.lineTo(300,250);
+		context.lineWidth = 5;
+		context.strokeStyle = "#f42924"
+		context.stroke();
+
+		context.moveTo(300,150);
+		context.lineTo(200,250);
+		context.lineWidth = 5;
+		context.strokeStyle = "#f42924"
+		context.stroke();
+
+		//circulo
+		context.beginPath();
+		context.arc(100, 100, 50, Math.PI, 2*Math.PI * 3/4);
+		context.stroke(); 
+
+		//texto
+		var textGradient = context.createLinearGradient(200, 50, 300, 50);
+          
+    textGradient.addColorStop(0, "red");
+    textGradient.addColorStop(1, "yellow");
+          
+    context.fillStyle = textGradient;
+    context.font= "20px Arial";
+    context.fillText("My Canvas", 200, 50);
+
+
+
+	</script>
+
+
+	</body>
+</html>
